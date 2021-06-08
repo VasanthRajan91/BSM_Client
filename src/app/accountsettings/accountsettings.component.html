@@ -1,0 +1,155 @@
+<div style="text-align: left;margin-left: 10px;">
+    <a routerLink="../loan" routerLinkActive="active">Apply Loan</a>
+</div>
+<div style="text-align: center;">
+    <h2>Account Settings</h2>
+    <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput type="text" formControlName="customerid" placeholder="Customer ID" readonly>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput type="text" formControlName="name" placeholder="Name" readonly>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput type="text" formControlName="accountno" placeholder="Account Number" readonly>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required type="text" formControlName="country" placeholder="Country" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+            <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                <div *ngIf="f.country.errors.required">Country is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required type="text" formControlName="state" placeholder="State" [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+            <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                <div *ngIf="f.state.errors.required">State is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput type="text" formControlName="gender" placeholder="Gender" readonly>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput type="text" formControlName="dob" placeholder="Date of Birth" name="dob" readonly>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput type="text" formControlName="registrationdate" placeholder="Registration Date" readonly>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required type="text" formControlName="bankname" placeholder="Bank Name" [ngClass]="{ 'is-invalid': submitted && f.bankname.errors }">
+            <div *ngIf="submitted && f.bankname.errors" class="invalid-feedback">
+                <div *ngIf="f.bankname.errors.required">Bank Name is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required type="text" formControlName="branchname" placeholder="Branch Name" [ngClass]="{ 'is-invalid': submitted && f.branchname.errors }">
+            <div *ngIf="submitted && f.branchname.errors" class="invalid-feedback">
+                <div *ngIf="f.branchname.errors.required">Bank Name is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Indentification Proof</mat-label>
+            <mat-select required placeholder="Indentification Proof Type" 
+            name="indentificationprooftype" formControlName="indentificationprooftype" [ngClass]="{ 'is-invalid': submitted && f.indentificationprooftype.errors }">
+                <mat-option value="Aadhaar Card">Aadhaar Card</mat-option>
+                <mat-option value="Driving Licence">Driving Licence</mat-option>
+                <mat-option value="Pan Card">Pan Card</mat-option>
+            </mat-select>
+            <div *ngIf="submitted && f.indentificationprooftype.errors" class="invalid-feedback">
+                <div *ngIf="f.indentificationprooftype.errors.required">Indentification Proof Type is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required placeholder="Indentification Doc No" formControlName="indentificationdocno" [ngClass]="{ 'is-invalid': submitted && f.indentificationdocno.errors }">
+            <div *ngIf="submitted && f.indentificationdocno.errors" class="invalid-feedback">
+                <div *ngIf="f.indentificationdocno.errors.required">Indentification Doc is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required placeholder="Account Holder Name" formControlName="accountholdername" [ngClass]="{ 'is-invalid': submitted && f.accountholdername.errors }">
+            <div *ngIf="submitted && f.accountholdername.errors" class="invalid-feedback">
+                <div *ngIf="f.accountholdername.errors.required">Account Holder Name is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required placeholder="Account Holder Number" formControlName="accountholdernumber" [ngClass]="{ 'is-invalid': submitted && f.accountholdernumber.errors }">
+            <div *ngIf="submitted && f.accountholdernumber.errors" class="invalid-feedback">
+                <div *ngIf="f.accountholdernumber.errors.required">Account Holder Number is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required placeholder="Account Holder Address" formControlName="accountholderaddress" [ngClass]="{ 'is-invalid': submitted && f.accountholderaddress.errors }">
+            <div *ngIf="submitted && f.accountholderaddress.errors" class="invalid-feedback">
+                <div *ngIf="f.accountholderaddress.errors.required">Account Holder Address is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        
+        <mat-form-field >
+            <input matInput required placeholder="Address" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Address is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required placeholder="Contact Number" formControlName="contact" [ngClass]="{ 'is-invalid': submitted && f.contact.errors }">
+            <div *ngIf="submitted && f.contact.errors" class="invalid-feedback">
+                <div *ngIf="f.contact.errors.required">Contact Number is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required type="text" placeholder="Email Address" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email Address is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <mat-label>Marital Status</mat-label>
+            <mat-select required name="marital" formControlName="marital" [ngClass]="{ 'is-invalid': submitted && f.marital.errors }">
+                <mat-option value="Married">Married</mat-option>
+                <mat-option value="Single">Single</mat-option>
+            </mat-select>
+            <div *ngIf="submitted && f.marital.errors" class="invalid-feedback">
+                <div *ngIf="f.marital.errors.required">Marital status is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <mat-select required formControlName="accounttype" [ngClass]="{ 'is-invalid': submitted && f.accounttype.errors }">
+                <mat-option value="savings">Savings</mat-option>
+            </mat-select>
+            <div *ngIf="submitted && f.accounttype.errors" class="invalid-feedback">
+                <div *ngIf="f.accounttype.errors.required">Account type is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        
+        <mat-form-field >
+            <input matInput required placeholder="Citizenship" formControlName="citizenship" [ngClass]="{ 'is-invalid': submitted && f.citizenship.errors }">
+            <div *ngIf="submitted && f.citizenship.errors" class="invalid-feedback">
+                <div *ngIf="f.citizenship.errors.required">Citizenship is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required placeholder="Citizen status" formControlName="citizenstatus" [ngClass]="{ 'is-invalid': submitted && f.citizenstatus.errors }">
+            <div *ngIf="submitted && f.citizenstatus.errors" class="invalid-feedback">
+                <div *ngIf="f.citizenstatus.errors.required">Citizen status is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required placeholder="Guardian Type" formControlName="guardiantype" [ngClass]="{ 'is-invalid': submitted && f.guardiantype.errors }">
+            <div *ngIf="submitted && f.guardiantype.errors" class="invalid-feedback">
+                <div *ngIf="f.guardiantype.errors.required">Guardian type is required</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="accsettingsalign">
+            <input matInput required placeholder="Guardian Name" formControlName="guardianname" [ngClass]="{ 'is-invalid': submitted && f.guardianname.errors }">
+            <div *ngIf="submitted && f.guardianname.errors" class="invalid-feedback">
+                <div *ngIf="f.guardianname.errors.required">Guardian name is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button type="submit" color="primary">Submit</button>
+    </form>
+</div>

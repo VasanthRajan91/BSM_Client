@@ -1,0 +1,73 @@
+<div style="text-align: right;">
+<a style="margin-right: 30px;" routerLink="../accountsettings" routerLinkActive="active">Account Settings</a>
+<a style="margin-right: 20px;" (click)="logout()" >Logout</a>
+</div>
+<div style="text-align: center;">
+    <h2>Apply Loan</h2>
+    <form [formGroup]="loanForm" >
+        <mat-form-field class="example-full-width">
+            <mat-label>Loan Type</mat-label>
+            <mat-select required formControlName="loantype" [(ngModel)]="loanType">
+                <mat-option *ngFor="let loanType of loanTypes" [value]="loanType">{{loanType}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Loan Amount</mat-label>
+            <input matInput placeholder="Loan Amount" value="a" required formControlName="loanamount">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Loan Apply Date</mat-label>
+            <input matInput type="date" placeholder="Loan Apply Date" value="" required formControlName="loanapplydate">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Rate of Interest</mat-label>
+            <mat-select name="interest" required formControlName="interest" [(ngModel)]="loanInterest">
+                <mat-option *ngFor="let loanInterest of loanInterests" [value]="loanInterest">{{loanInterest}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Duration of the loan</mat-label>
+            <mat-select name="loanduration" required formControlName="loanduration">
+                <mat-option *ngFor="let loanduration of loandurations" [value]="loanduration">{{loanduration}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <div *ngIf="loanType === 'Educational'">
+            <mat-form-field class="example-full-width">
+                <mat-label>Course fee</mat-label>
+                <input matInput type="number" placeholder="Course Fee" value="" required formControlName="coursefee">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Course</mat-label>
+                <input matInput placeholder="Course" value="" required formControlName="course">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Father Name</mat-label>
+                <input matInput placeholder="Father Name" value="" required formControlName="fathername">
+            </mat-form-field>
+        </div>
+        <div *ngIf="loanType === 'Housing' || loanType === 'Personal'">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Annual Income</mat-label>
+                <input matInput type="number" placeholder="Annual Income" value="" required formControlName="annualincome">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Company Name</mat-label>
+                <input matInput placeholder="Company Name" value="" required formControlName="companyname">
+            </mat-form-field>
+            <br>
+        </div>
+        
+        <button mat-raised-button type="submit" color="primary" (click)="onLoanSubmit()">Submit</button>
+    </form>
+</div>

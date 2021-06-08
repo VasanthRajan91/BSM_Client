@@ -1,0 +1,15 @@
+<div style="text-align: center;">
+    <h2>BMS Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="User Name" formControlName="username">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput type="password" placeholder="Password" formControlName="password">
+        </mat-form-field>
+        <br>
+        <button mat-raised-button type="submit" color="primary">LOGIN</button><br>
+        <a mat-button routerLink="../registration" routerLinkActive="active">New User</a>
+    </form>
+</div>

@@ -1,0 +1,109 @@
+<div style="text-align: center;">
+    <h2>Registration</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>User Name</mat-label>
+            <input matInput type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">User Name is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Guardian Name</mat-label>
+            <input matInput formControlName="guardianname" [ngClass]="{ 'is-invalid': submitted && f.guardianname.errors }">
+            <div *ngIf="submitted && f.guardianname.errors" class="invalid-feedback">
+                <div *ngIf="f.guardianname.errors.required">Guardian Name is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Address is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="text" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Gender</mat-label>
+            <mat-select name="gender" formControlName="gender" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Others">Others</mat-option>
+            </mat-select>
+            <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                <div *ngIf="f.gender.errors.required">Gender is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Marital Status</mat-label>
+            <mat-select name="marital" formControlName="marital" [ngClass]="{ 'is-invalid': submitted && f.marital.errors }">
+                <mat-option value="Married">Married</mat-option>
+                <mat-option value="Single">Single</mat-option>
+            </mat-select>
+            <div *ngIf="submitted && f.marital.errors" class="invalid-feedback">
+                <div *ngIf="f.marital.errors.required">Marital Status is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Contact no</mat-label>
+            <input matInput type="tel"
+                formControlName="contact" [ngClass]="{ 'is-invalid': submitted && f.contact.errors }">
+                <div *ngIf="submitted && f.contact.errors" class="invalid-feedback">
+                    <div *ngIf="f.contact.errors.required">Contact is required</div>
+                    <div *ngIf="f.contact.errors.contact">Enter a valid Contact details</div>
+                </div>
+            </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="dob" 
+            [ngClass]="{ 'is-invalid': submitted && f.dob.errors }">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker ></mat-datepicker>
+            <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <mat-label>Account type</mat-label>
+            <mat-select name="account" formControlName="accounttype">
+                <mat-option value="savings">Savings</mat-option>
+            </mat-select>
+            <div *ngIf="submitted && f.accounttype.errors" class="invalid-feedback">
+                <div *ngIf="f.accounttype.errors.required">Account type is required</div>
+            </div>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button type="submit" color="primary">Submit</button>
+    </form>
+</div>
