@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   submitted = false;
   maxDate = new Date();
-
+  respMsg: any;
   constructor(private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private regService: RegistrationService,
@@ -65,10 +65,15 @@ export class RegistrationComponent implements OnInit {
     this.regService.newUser(this.regData).subscribe(
       response => {
         let regResp = JSON.parse(response);
-        this.dialog.open(RegistrationdialogComponent, {
-          width: '250px',
-          data: { customerid : regResp.customerid }
-        });
+        if(regResp.responseCode == "200") {
+          this.dialog.open(RegistrationdialogComponent, {
+            width: '250px',
+            data: { customerid : regResp.customerid }
+          });
+        } else {
+          this.respMsg = regResp.responseMsg;
+        }
+        
       }, err => {
         console.log(err)
       }

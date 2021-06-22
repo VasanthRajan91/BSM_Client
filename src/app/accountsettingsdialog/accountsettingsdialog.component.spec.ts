@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AccountsettingsdialogComponent } from './accountsettingsdialog.component';
 
 describe('AccountsettingsdialogComponent', () => {
@@ -8,6 +9,11 @@ describe('AccountsettingsdialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, FormsModule, MatDialogModule],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: {} }
+      ],
       declarations: [ AccountsettingsdialogComponent ]
     })
     .compileComponents();

@@ -13,7 +13,7 @@ export class AccountsettingsComponent implements OnInit {
   settingsForm: FormGroup;
   submitted = false;
   settingsData: any;
-
+  respMsg: any;
   constructor(private formBuilder: FormBuilder,
     private regService: RegistrationService,
     private dialog: MatDialog) { }
@@ -49,7 +49,7 @@ export class AccountsettingsComponent implements OnInit {
     this.regService.getAccountDetails(localStorage.getItem("Token")).subscribe(
       response => {
         let accResp = JSON.parse(response);
-        this.settingsForm = this.formBuilder.group(accResp); 
+        this.settingsForm = this.formBuilder.group(accResp);
       }, err => {
         console.log(err)
       }
@@ -66,10 +66,15 @@ export class AccountsettingsComponent implements OnInit {
     this.settingsData = this.settingsForm.value;
     this.regService.updateAccountDetails(this.settingsData).subscribe(
       response => {
-        this.dialog.open(AccountsettingsdialogComponent, {
-          width: '250px',
-          data: { msg : response }
-        });
+        let accResp = JSON.parse(response);
+        if (accResp.responseCode == "200") {
+          this.dialog.open(AccountsettingsdialogComponent, {
+            width: '250px',
+            data: { msg: accResp.responseMsg }
+          });
+        } else {
+            this.respMsg = accResp.responseMsg;
+        }
       }, err => {
         console.log(err)
       }

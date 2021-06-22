@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RegistrationService {
-  API = 'http://localhost:9090/bcm';
+  API = 'http://localhost:9090/user';
   constructor(private http: HttpClient) { }
 
   newUser(data: any) {

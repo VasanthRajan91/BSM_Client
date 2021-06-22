@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LoanService {
-  API = 'http://localhost:9090/bcm';
+  API = 'http://localhost:9090/loan';
   constructor(private http: HttpClient) { }
 
   createLoan(loandata: any, token: any) {
